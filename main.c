@@ -49,9 +49,8 @@ int		main()
 	if (!(is_a_number(line)))
 		exit(1);
 	a->nb = ft_atoi(line);
-	while (1)
+	while (get_next_line(0, &line))
 	{
-		secure_get_next_line(&line);
 		if (ft_strequ(line, "##start"))
 			get_start(line, a);
 		if (ft_strequ(line, "##end"))
@@ -65,20 +64,9 @@ int		main()
 		free(line);
 	}
 	get_liason(line, a);
-	while (get_next_line(0, &line))
+	while (get_next_line(0, &line) > 0)
 	{
 		get_liason(line, a);
 		free(line);
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
