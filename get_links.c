@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/19 19:51:38 by vcombey           #+#    #+#             */
-/*   Updated: 2017/02/19 19:51:40 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/02/19 23:51:33 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,20 @@ int		name_to_number(char *name, t_room *r)
 		tmp = tmp->next;
 	}
 	return (-1);
+}
+
+char	*number_to_name(int n, t_room *r)
+{
+	t_room	*tmp;
+
+	tmp = r;
+	while (tmp)
+	{
+		if (n == tmp->n)
+			return (tmp->name);
+		tmp = tmp->next;
+	}
+	return ("lol");
 }
 
 void	get_links(char *line, t_anthill *a)

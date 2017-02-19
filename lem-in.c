@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/14 22:01:27 by vcombey           #+#    #+#             */
-/*   Updated: 2017/02/19 23:26:30 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/02/19 23:56:13 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,13 @@
 #include <stdlib.h>
 #include "libft/libft.h"
 
-void	int_room_add(int n, t_room **r)
+void	int_room_add(int n, t_room **r, t_anthill a)
 {
 	t_room	*new;
 
 	new = (t_room*)malloc(sizeof(t_room));
 	new->n = n;
+	new->name = number_to_name(n, a.room);
 	new->next = *r;
 	*r = new;
 }
@@ -129,7 +130,7 @@ t_room	*find_best_way(t_anthill a)
 	k = a.end;
 	while (k != a.start)
 	{
-		int_room_add(k, &solus);
+		int_room_add(k, &solus, a);
 		k = bfs.way[k];
 		ft_putnbr(k);
 		ft_putchar('\n');

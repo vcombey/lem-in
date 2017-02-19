@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/14 22:03:08 by vcombey           #+#    #+#             */
-/*   Updated: 2017/02/19 22:25:47 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/02/19 23:57:51 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	display_room(t_room *r)
 	tmp = r;
 	while (tmp)
 	{
-		printf("n: %d\n", tmp->n);
+		printf("n: %d\nname: %s\n", tmp->n, tmp->name);
 		tmp = tmp->next;
 	}
 }
