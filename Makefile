@@ -10,10 +10,12 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME =	vcombey.filler
+NAME =	lem-in
 
 SRC =	main.c						\
-		quadrature_of_the_piece.c	\
+		lem-in.c					\
+		get_rooms.c					\
+		get_links.c				\
 
 INCLUDE = libft/
 

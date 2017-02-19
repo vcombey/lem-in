@@ -6,12 +6,14 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/14 22:03:08 by vcombey           #+#    #+#             */
-/*   Updated: 2017/02/14 22:06:55 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/02/18 18:31:21 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem-in.h"
 #include "libft/libft.h"
+#include <stdio.h>
+
 
 int		is_a_number(char *line)
 {
@@ -29,44 +31,63 @@ void	secure_get_next_line(char **line)
 		exit(1);
 }
 
-void	get_room(char *line, t_ant *a)
+void	get_nb(char *line, t_anthill *a)
 {
-	char	**s;
-
-	s = ft_strsplit(line, ' ');
-	if ((ft_strstrlen(s) != 3) || (!(is_a_number(s[1]))) || (!(is_a_number(s[2]))))
-		exit(1);
-
-}
-
-int		main()
-{
-	char	*line;
-	t_ant	*a;
-
-	a = (t_ant*)ft_memalloc(sizeof(t_ant));
-	secure_get_next_line(&line);
+	get_next_line(0, &line);
 	if (!(is_a_number(line)))
 		exit(1);
-	a->nb = ft_atoi(line);
+	a->nb_ant = ft_atoi(line);
+}
+
+void	display_room(t_room *r)
+{
+	t_room *tmp;
+	
+	tmp = r;
+	while (tmp)
+	{
+		printf("n: %d, name: %s", r->n, r->name);
+		tmp = tmp->next;
+	}
+}
+
+void	display_mat(t_anthill a)
+{
+	int i;
+	int j;
+	int n;
+
+	i = 0;
+	n = a.nb_room;
+	while (i < n)
+	{
+		j = 0;
+		while (j < n)
+		{
+			ft_putnbr(a.mat[i][j]);
+			j++;
+		}
+	}
+	ft_putchar('\n');
+	i++;
+}
+
+int		main(void)
+{
+	char		*line;
+	t_anthill	a;
+
+	line = NULL;
+	a.room = NULL;
+	get_nb(line, &a);
+	get_rooms(&a);
 	while (get_next_line(0, &line))
 	{
-		if (ft_strequ(line, "##start"))
-			get_start(line, a);
-		if (ft_strequ(line, "##end"))
-			get_end(line, a);
-		if (ft_strchr(line, '-'))
-			break;
-		if (line[0] == '#')
-			;
-		else
-			get_room(line, a);
+		get_links(line, &a);
 		free(line);
 	}
-	get_liason(line, a);
-	while (get_next_line(0, &line) > 0)
-	{
-		get_liason(line, a);
-		free(line);
-	}
+	printf("nb_ant : %d\n nb_room : %d\n", a.nb_ant, a.nb_room);
+	display_room(a.room);
+	printf("start : %d\n end : %d\n", a.start, a.end);
+	display_mat(a);
 }
