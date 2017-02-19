@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_rooms.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/02/19 19:51:23 by vcombey           #+#    #+#             */
+/*   Updated: 2017/02/19 21:17:28 by vcombey          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "lem-in.h"
 #include "libft/libft.h"
+#include <stdio.h>
 
 void	room_add(char *name, t_anthill *a)
 {
@@ -58,16 +70,16 @@ void	get_rooms(t_anthill *a)
 {
 	char	*line;
 
-	while (get_next_line(0, &line))
+	while (get_next_line(0, &line) > 0)
 	{
 		if (ft_strequ(line, "##start"))
 			get_start(line, a);
 		else if (ft_strequ(line, "##end"))
 			get_end(line, a);
-		else if (ft_strchr(line, '-'))
-			break ;
 		else if (line[0] == '#')
 			;
+		else if (ft_strchr(line, '-') != NULL)
+			break ;
 		else
 			get_room(line, a);
 		free(line);

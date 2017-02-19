@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_links.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/02/19 19:51:38 by vcombey           #+#    #+#             */
+/*   Updated: 2017/02/19 19:51:40 by vcombey          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "lem-in.h"
 #include "libft/libft.h"
@@ -37,8 +48,16 @@ int		name_to_number(char *name, t_room *r)
 void	get_links(char *line, t_anthill *a)
 {
 	int	i;
+	int	k;
+	int	l;
 
-	i = ft_strchri(line, '-');
+	if (line[0] == '#')
+		return ;
+	if ((i = ft_strchri(line, '-')) == -1)
+		exit(1);
 	line[i] = '\0';
-	a->mat[name_to_number(line, a->room)][name_to_number(line + i + 1, a->room)] = 1;
+	k = name_to_number(line, a->room);
+	l = name_to_number(line + i + 1, a->room);
+	a->mat[k][l] = 1;
+	a->mat[l][k] = 1;
 }

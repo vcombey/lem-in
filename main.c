@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/14 22:03:08 by vcombey           #+#    #+#             */
-/*   Updated: 2017/02/18 18:31:21 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/02/19 19:24:14 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,14 @@
 
 int		is_a_number(char *line)
 {
-	while (*line)
+	int	i;
+
+	i = 0;
+	while (line[i])
 	{
-		if ((*line > 57) || (*line < 48))
+		if ((line[i] > 57) || (line[i] < 48))
 			return (0);
+		i++;
 	}
 	return (1);
 }
@@ -46,7 +50,7 @@ void	display_room(t_room *r)
 	tmp = r;
 	while (tmp)
 	{
-		printf("n: %d, name: %s", r->n, r->name);
+		printf("n: %d, name: %s\n", tmp->n, tmp->name);
 		tmp = tmp->next;
 	}
 }
@@ -67,9 +71,9 @@ void	display_mat(t_anthill a)
 			ft_putnbr(a.mat[i][j]);
 			j++;
 		}
+		ft_putchar('\n');
+		i++;
 	}
-	ft_putchar('\n');
-	i++;
 }
 
 int		main(void)
@@ -80,14 +84,15 @@ int		main(void)
 	line = NULL;
 	a.room = NULL;
 	get_nb(line, &a);
+	printf("nb_ant : %d\n", a.nb_ant);
 	get_rooms(&a);
-	while (get_next_line(0, &line))
+	display_room(a.room);
+	printf("nb_room: %d\n", a.nb_room);
+	while (get_next_line(0, &line) > 0)
 	{
 		get_links(line, &a);
 		free(line);
 	}
-	printf("nb_ant : %d\n nb_room : %d\n", a.nb_ant, a.nb_room);
-	display_room(a.room);
-	printf("start : %d\n end : %d\n", a.start, a.end);
+	printf("start : %d\nend : %d\n", a.start, a.end);
 	display_mat(a);
 }
