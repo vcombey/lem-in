@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/14 22:01:44 by vcombey           #+#    #+#             */
-/*   Updated: 2017/02/19 20:14:04 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/02/19 22:07:43 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,7 @@ void	init_mat(t_anthill *a);
 int		name_to_number(char *name, t_room *r);
 void	get_links(char *line, t_anthill *a);
 int		is_a_number(char *line);
+void	room_add(char *name, t_anthill *a);
+t_room	*find_best_way(t_anthill a);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/14 22:03:08 by vcombey           #+#    #+#             */
-/*   Updated: 2017/02/19 19:24:14 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/02/19 22:25:47 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	display_room(t_room *r)
 	tmp = r;
 	while (tmp)
 	{
-		printf("n: %d, name: %s\n", tmp->n, tmp->name);
+		printf("n: %d\n", tmp->n);
 		tmp = tmp->next;
 	}
 }
@@ -80,6 +80,7 @@ int		main(void)
 {
 	char		*line;
 	t_anthill	a;
+	t_room		*solus;
 
 	line = NULL;
 	a.room = NULL;
@@ -95,4 +96,6 @@ int		main(void)
 	}
 	printf("start : %d\nend : %d\n", a.start, a.end);
 	display_mat(a);
+	solus = find_best_way(a);
+	display_room(solus);
 }
