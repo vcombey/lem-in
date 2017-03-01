@@ -13,6 +13,8 @@
 #ifndef LEM_IN_H
 #define LEM_IN_H
 
+#define LINES			1000
+
 typedef struct			s_neightbour
 {
 	char				*name;
@@ -43,6 +45,13 @@ typedef struct			s_anthill
 	int					**mat;
 }						t_anthill;
 
+typedef struct			s_file
+{
+	char				**data;
+	int					line;
+	int					column;
+}						t_file;
+
 typedef struct			s_bfs
 {
 	t_room				*already_seen;
@@ -50,11 +59,17 @@ typedef struct			s_bfs
 	int					*way;
 }						t_bfs;
 
-void	get_rooms(t_anthill *a);
+/*
+**utils
+*/
+void	ft_exit_err(char *msg, t_file *data);
+
+
+void	get_rooms(t_anthill *a, t_file *f);
 void	init_mat(t_anthill *a);
 int		name_to_number(char *name, t_room *r);
 char	*number_to_name(int n, t_room *r);
-void	get_links(char *line, t_anthill *a);
+void	get_links(char *line, t_anthill *a, t_file *f);
 int		is_a_number(char *line);
 void	room_add(char *name, t_anthill *a);
 t_room	*find_best_way(t_anthill a);

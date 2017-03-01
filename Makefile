@@ -15,9 +15,12 @@ NAME =	lem-in
 SRC =	main.c						\
 		lem-in.c					\
 		get_rooms.c					\
-		get_links.c				\
+		get_links.c					\
+		utils/ft_exit_err.c			\
 
-INCLUDE = libft/
+INCLUDE = -I libft/ -I ./ft_printf/ -I ./include
+
+LIBS = -L ./libft -lft -L ./ft_printf/ -lftprintf
 
 OBJS = $(addprefix objs/, $(SRC:.c=.o))
 
@@ -27,20 +30,24 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	make -C ./libft/
-	gcc -g $(OBJS) -L libft -lft -o $(NAME)
+	make -C ./ft_printf/
+	gcc -g $(OBJS) $(LIBS) -o $(NAME)
 
 clean:
 	make clean -C ./libft/
+	make clean -C ./ft_printf
 	/bin/rm -rf objs
 
 fclean: clean
 	/bin/rm -f ./libft/libft.a
+	/bin/rm -f ./ft_printf/libft.a
 	/bin/rm -f $(NAME)
 
 re: fclean all
 
 objs/%.o : %.c
 	@/bin/mkdir -p objs
-	gcc -g $(CFLAGS) -I $(INCLUDE) -c -o $@ $<
+	@/bin/mkdir -p objs/utils
+	gcc -g $(CFLAGS) $(INCLUDE) -c -o $@ $<
 
 .PHONY: all clean fclean re

@@ -59,7 +59,7 @@ char	*number_to_name(int n, t_room *r)
 	return ("lol");
 }
 
-void	get_links(char *line, t_anthill *a)
+void	get_links(char *line, t_anthill *a, t_file *f)
 {
 	int	i;
 	int	k;
@@ -68,7 +68,7 @@ void	get_links(char *line, t_anthill *a)
 	if (line[0] == '#')
 		return ;
 	if ((i = ft_strchri(line, '-')) == -1)
-		exit(1);
+		ft_exit_err("bad links", f);
 	line[i] = '\0';
 	k = name_to_number(line, a->room);
 	l = name_to_number(line + i + 1, a->room);
