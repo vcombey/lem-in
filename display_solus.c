@@ -14,6 +14,11 @@
 #include "ft_printf.h"
 #include <unistd.h>
 
+int		room_len(t_room *r)
+{
+	return ((r == NULL) ? 0 : 1 + room_len(r->next));
+}
+
 void	display_move(t_room *solus)
 {
 	if (solus->next == NULL)
@@ -29,13 +34,22 @@ void	display_move(t_room *solus)
 void	display_solus(t_room *solus, t_anthill a)
 {
 	int		i;
+	int		n;
 
 	i = 1;
+	n = room_len(solus);
 	while (i <= a.nb_ant)
 	{
 		ft_printf("L%d-%s ", i, solus->name);
 		display_move(solus);
 		solus->n = i;
+		write(1, "\n", 1);
+		i++;
+	}
+	i = 1;
+	while (i < room_len(solus))
+	{
+		display_move(solus);
 		write(1, "\n", 1);
 		i++;
 	}
