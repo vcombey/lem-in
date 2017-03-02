@@ -6,14 +6,14 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/19 19:51:38 by vcombey           #+#    #+#             */
-/*   Updated: 2017/02/19 23:51:33 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/03/02 16:05:51 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem-in.h"
 #include "libft/libft.h"
 
-void	init_mat(t_anthill *a)
+void	init_mat(t_anthill *a, t_file *f)
 {
 	int		n;
 	int		i;
@@ -21,12 +21,12 @@ void	init_mat(t_anthill *a)
 	i = 0;
 	n = a->nb_room;
 	if (!(a->mat = (int **)malloc(sizeof(int *) * (n + 1))))
-		exit(1);
+		ft_exit_err("malloc error", f);
 	a->mat[n] = NULL;
 	while (i < n)
 	{
 		if (!(a->mat[i] = (int *)ft_memalloc(sizeof (int) * (n + 1))))
-			exit(1);
+			ft_exit_err("malloc error", f);
 		i++;
 	}
 }
@@ -72,6 +72,7 @@ void	get_links(char *line, t_anthill *a, t_file *f)
 	line[i] = '\0';
 	k = name_to_number(line, a->room);
 	l = name_to_number(line + i + 1, a->room);
+	line[i] = '-';
 	a->mat[k][l] = 1;
 	a->mat[l][k] = 1;
 }

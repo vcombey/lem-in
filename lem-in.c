@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/14 22:01:27 by vcombey           #+#    #+#             */
-/*   Updated: 2017/02/19 23:56:13 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/03/02 16:37:48 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 #include <stdlib.h>
 #include "libft/libft.h"
 
-void	int_room_add(int n, t_room **r, t_anthill a)
+void	solus_room_add(int n, t_room **r, t_anthill a)
 {
 	t_room	*new;
 
 	new = (t_room*)malloc(sizeof(t_room));
-	new->n = n;
+	new->n = -1;
 	new->name = number_to_name(n, a.room);
 	new->next = *r;
 	*r = new;
@@ -38,7 +38,6 @@ int		int_is_in_lst(int n, t_room *r)
 	}
 	return (0);
 }
-
 
 void	file_add(int n, t_room **r)
 {
@@ -93,9 +92,9 @@ void	ft_bfs(t_anthill a, t_bfs *bfs)
 	{
 		r = file_take(&(bfs->to_see));
 		i = 0;
-		ft_putnbr(r);
-		ft_putchar('\n');
-		display_way(bfs->way, a.nb_room);
+		//ft_putnbr(r);
+		//ft_putchar('\n');
+		//display_way(bfs->way, a.nb_room);
 		while (i < a.nb_room)
 		{
 			if (a.mat[r][i] && (!(int_is_in_lst(i, bfs->already_seen))))
@@ -130,10 +129,10 @@ t_room	*find_best_way(t_anthill a)
 	k = a.end;
 	while (k != a.start)
 	{
-		int_room_add(k, &solus, a);
+		solus_room_add(k, &solus, a);
 		k = bfs.way[k];
-		ft_putnbr(k);
-		ft_putchar('\n');
+		//ft_putnbr(k);
+		//ft_putchar('\n');
 	}
 	return (solus);
 }

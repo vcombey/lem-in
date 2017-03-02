@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/19 19:51:23 by vcombey           #+#    #+#             */
-/*   Updated: 2017/02/19 22:04:00 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/03/02 15:26:02 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ void	get_rooms(t_anthill *a, t_file *f)
 			get_room(line, a, f);
 		f->line++;
 	}
-	init_mat(a);
+	init_mat(a, f);
 	get_links(line, a, f);
+	f->line++;
 }

@@ -6,7 +6,7 @@
 #    By: vcombey <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/30 19:59:01 by vcombey           #+#    #+#              #
-#    Updated: 2017/02/14 02:25:37 by vcombey          ###   ########.fr        #
+#    Updated: 2017/03/02 16:33:17 by vcombey          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ SRC =	main.c						\
 		lem-in.c					\
 		get_rooms.c					\
 		get_links.c					\
+		display_solus.c				\
 		utils/ft_exit_err.c			\
 
 INCLUDE = -I libft/ -I ./ft_printf/ -I ./include
@@ -35,7 +36,7 @@ $(NAME): $(OBJS)
 
 clean:
 	make clean -C ./libft/
-	make clean -C ./ft_printf
+	make clean -C ./ft_printf/
 	/bin/rm -rf objs
 
 fclean: clean
