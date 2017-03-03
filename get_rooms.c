@@ -59,6 +59,8 @@ void	get_start(t_file *f, t_anthill *a)
 	f->line++;
 	if ((line = f->data[f->line - 1]) == NULL)
 		ft_exit_err("no start", f);
+	if (a->start != -1)
+		ft_exit_err("redefinition of start", f);
 	a->start = a->nb_room;
 	get_room(line, a, f);
 }
@@ -69,7 +71,9 @@ void	get_end(t_file *f, t_anthill *a)
 
 	f->line++;
 	if ((line = f->data[f->line - 1]) == NULL)
-		ft_exit_err("no start", f);
+		ft_exit_err("no end", f);
+	if (a->end != -1)
+		ft_exit_err("redefinition of end", f);
 	a->end = a->nb_room;
 	get_room(line, a, f);
 }
@@ -95,4 +99,8 @@ void	get_rooms(t_anthill *a, t_file *f)
 	init_mat(a, f);
 	get_links(line, a, f);
 	f->line++;
+	if (a->start == -1)
+		ft_exit_err("no start room", f);
+	if (a->end == -1)
+		ft_exit_err("no end room", f);
 }

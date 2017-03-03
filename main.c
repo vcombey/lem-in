@@ -104,6 +104,8 @@ int		main(void)
 
 	read_file(&f);
 	a.room = NULL;
+	a.start = -1;
+	a.end = -1;
 	get_nb(f.data[0], &a);
 	f.line++;
 	//printf("nb_ant : %d\n", a.nb_ant);
