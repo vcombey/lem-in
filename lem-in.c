@@ -130,7 +130,8 @@ t_room	*find_best_way(t_anthill a)
 	while (k != a.start)
 	{
 		solus_room_add(k, &solus, a);
-		k = bfs.way[k];
+		if ((k = bfs.way[k]) == -1)
+			ft_exit_err("the ants say: \"there is no fucking way to the end\"", NULL);
 		//ft_putnbr(k);
 		//ft_putchar('\n');
 	}

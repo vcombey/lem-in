@@ -40,8 +40,8 @@ void	display_solus(t_room *solus, t_anthill a)
 	n = room_len(solus);
 	while (i <= a.nb_ant)
 	{
-		ft_printf("L%d-%s ", i, solus->name);
 		display_move(solus);
+		ft_printf("L%d-%s ", i, solus->name);
 		solus->n = i;
 		write(1, "\n", 1);
 		i++;

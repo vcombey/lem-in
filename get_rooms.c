@@ -96,9 +96,6 @@ void	get_rooms(t_anthill *a, t_file *f)
 			get_room(line, a, f);
 		f->line++;
 	}
-	init_mat(a, f);
-	get_links(line, a, f);
-	f->line++;
 	if (a->start == -1)
 		ft_exit_err("no start room", f);
 	if (a->end == -1)

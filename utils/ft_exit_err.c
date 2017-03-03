@@ -22,7 +22,9 @@ void	ft_exit_err(char *msg, t_file *data)
 	int	save_errno;
 
 	save_errno = errno;
-	if (errno == 0)
+	if (data == NULL)
+		ft_printf("error: %s\n", msg);
+	else if (errno == 0)
 	{
 		ft_printf("syntax error: %s at [%d, %d]\n", msg, data->line,
 				data->column);

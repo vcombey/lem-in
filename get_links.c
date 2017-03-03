@@ -70,8 +70,10 @@ void	get_links(char *line, t_anthill *a, t_file *f)
 	if ((i = ft_strchri(line, '-')) == -1)
 		ft_exit_err("bad links", f);
 	line[i] = '\0';
-	k = name_to_number(line, a->room);
-	l = name_to_number(line + i + 1, a->room);
+	if ((k = name_to_number(line, a->room)) == -1)
+		ft_exit_err("bad room name in links", f);
+	if ((l = name_to_number(line + i + 1, a->room)) == -1)
+		ft_exit_err("bad room name in links", f);
 	line[i] = '-';
 	a->mat[k][l] = 1;
 	a->mat[l][k] = 1;
