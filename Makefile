@@ -18,6 +18,8 @@ SRC =	main.c						\
 		get_links.c					\
 		display_solus.c				\
 		utils/ft_exit_err.c			\
+		utils/room_len.c			\
+			debug.c					\
 
 INCLUDE = -I libft/ -I ./ft_printf/ -I ./include
 

@@ -2,10 +2,16 @@
 ##start
 debut 1 0
 1 9 0
+#
 2 13 0
+3 12 1
+4 23 4
 ##end
 fin 5 0
 debut-1
 1-2
 fin-2
+debut-3
+3-4
+4-fin
 debut-fin

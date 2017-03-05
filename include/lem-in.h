@@ -35,6 +35,13 @@ typedef struct			s_room
 	struct s_room		*next;
 }						t_room;
 
+typedef struct			s_ways
+{
+	t_room				*solus;
+	int					nb_ant;
+	struct s_ways		*next;
+}						t_ways;
+
 typedef struct			s_anthill
 {
 	int					nb_ant;
@@ -63,6 +70,7 @@ typedef struct			s_bfs
 **utils
 */
 void	ft_exit_err(char *msg, t_file *data);
+int		room_len(t_room *r);
 
 
 void	get_rooms(t_anthill *a, t_file *f);
@@ -74,5 +82,10 @@ int		is_a_number(char *line);
 void	room_add(char *name, t_anthill *a);
 t_room	*find_best_way(t_anthill a);
 void	display_solus(t_room *solus, t_anthill a);
+t_ways	*find_best_ways(t_anthill a);
+void	display_multi_solus(t_ways *ways, t_anthill a);
+
+void	display_room(t_room *r);
+void	display_mat(t_anthill a);
 
 #endif

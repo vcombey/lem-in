@@ -61,7 +61,7 @@ int		main(void)
 {
 	t_file		f;
 	t_anthill	a;
-	t_room		*solus;
+	t_ways		*ways;
 
 	read_file(&f);
 	a.room = NULL;
@@ -80,10 +80,10 @@ int		main(void)
 		f.line++;
 	}
 	//printf("start : %d\nend : %d\n", a.start, a.end);
-	//display_mat(a);
-	solus = find_best_way(a);
 	ft_putstrstr(f.data);
 	write(1, "\n", 1);
-	display_solus(solus, a);
+	display_mat(a);
+	ways = find_best_ways(a);
+	display_multi_solus(ways, a);
 	//display_room(solus);
 }

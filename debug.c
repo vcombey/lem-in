@@ -1,3 +1,9 @@
+#include "lem-in.h"
+#include <stdlib.h>
+#include "libft/libft.h"
+#include "ft_printf.h"
+#include <stdio.h>
+
 void	display_room(t_room *r)
 {
 	t_room *tmp;
@@ -5,7 +11,7 @@ void	display_room(t_room *r)
 	tmp = r;
 	while (tmp)
 	{
-		printf("n: %d\nname: %s\n", tmp->n, tmp->name);
+		ft_printf("n: %d, name: %s\n", tmp->n, tmp->name);
 		tmp = tmp->next;
 	}
 }
@@ -29,5 +35,5 @@ void	display_mat(t_anthill a)
 		ft_putchar('\n');
 		i++;
 	}
+	ft_putchar('\n');
 }
-
