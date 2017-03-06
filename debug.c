@@ -4,6 +4,33 @@
 #include "ft_printf.h"
 #include <stdio.h>
 
+void	display_ways(t_ways *ways)
+{
+	t_ways	*tmp;
+
+	tmp = ways;
+	while (tmp)
+	{
+		ft_printf("nb_ant%d\n", tmp->nb_ant);
+		display_room(tmp->solus);
+		write(1, "\n", 1);
+		tmp = tmp->next;
+	}
+}
+
+void	display_way(int *way, int n)
+{
+	int i;
+
+	i = 0;
+	while (i < n)
+	{
+		ft_putnbr(way[i]);
+		i++;
+	}
+	ft_putchar('\n');
+}
+
 void	display_room(t_room *r)
 {
 	t_room *tmp;

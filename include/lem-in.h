@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/14 22:01:44 by vcombey           #+#    #+#             */
-/*   Updated: 2017/03/06 21:46:07 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/03/06 23:15:40 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ t_ways					*find_best_ways(t_anthill a);
 void					display_multi_solus(t_ways *ways, t_anthill a);
 void					free_all_the_shit(t_ways *ways, t_anthill a, t_file f);
 void					free_room(t_room *r);
+void					free_bfs(t_bfs bfs);
 
 /*
 **utils

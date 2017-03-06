@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/14 22:01:27 by vcombey           #+#    #+#             */
-/*   Updated: 2017/03/06 21:59:12 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/03/06 23:17:54 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ void	file_add(int n, t_room **r)
 	t_room	*new;
 
 	tmp = *r;
-	new = (t_room*)malloc(sizeof(t_room));
+	if (!(new = (t_room*)malloc(sizeof(t_room))))
+		ft_exit_err("malloc error", NULL);
 	new->n = n;
 	new->name = NULL;
 	new->next = NULL;
@@ -70,19 +71,6 @@ int		file_take(t_room **r)
 	*r = (*r)->next;
 	free(tmp);
 	return (tmp->n);
-}
-
-void	display_way(int *way, int n)
-{
-	int i;
-
-	i = 0;
-	while (i < n)
-	{
-		ft_putnbr(way[i]);
-		i++;
-	}
-	ft_putchar('\n');
 }
 
 void	ft_bfs(t_anthill a, t_bfs *bfs)
@@ -128,13 +116,6 @@ void	delete_room(int k, t_anthill a)
 		a.mat[i][k] = 0;
 		i++;
 	}
-}
-
-void	free_bfs(t_bfs bfs)
-{
-	free_room(bfs.already_seen);
-	free_room(bfs.to_see);
-	free(bfs.way);
 }
 
 t_room	*find_best_way(t_anthill a)
@@ -212,20 +193,6 @@ int		ways_len(t_ways *ways)
 	return ((ways == NULL) ? 0 : 1 + ways_len(ways->next));
 }
 
-void	display_ways(t_ways *ways)
-{
-	t_ways	*tmp;
-
-	tmp = ways;
-	while (tmp)
-	{
-		ft_printf("nb_ant%d\n", tmp->nb_ant);
-		display_room(tmp->solus);
-		write(1, "\n", 1);
-		tmp = tmp->next;
-	}
-}
-
 t_ways	*find_best_ways(t_anthill a)
 {
 	t_ways	*ways;
@@ -244,7 +211,10 @@ t_ways	*find_best_ways(t_anthill a)
 		b = ((room_len(ways->solus) - room_len(solus) + ways->nb_ant + 1) / 2);
 		ant_per_solus = b / ways_len(ways);
 		if ((b < 1) || (ant_per_solus < 1))
+		{
+			free_room(solus);
 			return (ways);
+		}
 		supress_ant_in_the_first_solutions(ways, b);
 		add_ways(&ways, solus, b);
 		//display_ways(ways);
