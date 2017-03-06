@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   empty.c                                            :+:      :+:    :+:   */
+/*   ft_tab_free.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcombey <vcombey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/21 21:38:56 by vcombey           #+#    #+#             */
-/*   Updated: 2017/02/21 21:48:18 by vcombey          ###   ########.fr       */
+/*   Created: 2017/03/06 20:21:17 by vcombey           #+#    #+#             */
+/*   Updated: 2017/03/06 20:21:20 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int			empty(char *str)
+#include <stdlib.h>
+
+void	ft_tab_free(char **tab)
 {
-	if (!str)
-		return (0);
-	while (*str != '\0')
+	size_t	i;
+
+	i = 0;
+	while (tab[i])
 	{
-		if (*str != ' ' && *str != '\n' && *str != '\t')
-			return (0);
-		str++;
+		free(tab[i]);
+		i++;
 	}
-	return (1);
+	free(tab);
 }

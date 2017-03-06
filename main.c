@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/14 22:03:08 by vcombey           #+#    #+#             */
-/*   Updated: 2017/03/06 17:59:21 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/03/06 20:25:00 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,19 +72,24 @@ int		main(void)
 	f.line++;
 	//printf("nb_ant : %d\n", a.nb_ant);
 	get_rooms(&a, &f);
-	init_mat(&a, &f);
+	init_mat(&a);
 	//display_room(a.room);
 	//printf("nb_room: %d\n", a.nb_room);
-	while (f.data[f.line - 1])
+	while (f.data[f.line - 1] != NULL)
 	{
-		get_links(f.data[f.line - 1], &a, &f);
+		if (!(get_links(f.data[f.line - 1], &a)))
+		{
+			f.line--;
+			break ;
+		}
 		f.line++;
 	}
 	//printf("start : %d\nend : %d\n", a.start, a.end);
-	write(1, "\n", 1);
 	//display_mat(a);
 	ways = find_best_ways(a);
-	ft_putstrstr(f.data);
+	ft_putnstrstr(f.data, f.line);
+	write(1, "\n", 1);
 	display_multi_solus(ways, a);
+	free_all_the_shit(ways, a, f);
 	//display_room(solus);
 }

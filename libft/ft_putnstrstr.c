@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap_bits.c                                        :+:      :+:    :+:   */
+/*   ft_putnstrstr.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbadia <rbadia@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/22 17:25:08 by rbadia            #+#    #+#             */
-/*   Updated: 2017/02/22 17:38:03 by rbadia           ###   ########.fr       */
+/*   Created: 2017/03/06 18:34:01 by vcombey           #+#    #+#             */
+/*   Updated: 2017/03/06 18:36:15 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		swap_bits(int integer)
-{
-	int	ret;
+#include "libft.h"
+#include <unistd.h>
 
-	ret = integer & 0xff;
-	ret <<= 8;
-	integer >>= 8;
-	ret += integer & 0xff;
-	ret <<= 8;
-	integer >>= 8;
-	ret += integer & 0xff;
-	ret <<= 8;
-	integer >>= 8;
-	ret += integer & 0xff;
-	return (ret);
+void	ft_putnstrstr(char **str, int n)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] && (i < n))
+	{
+		ft_putendl(str[i]);
+		i++;
+	}
 }

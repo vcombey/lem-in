@@ -6,7 +6,7 @@
 #    By: vcombey <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/09 16:54:16 by vcombey           #+#    #+#              #
-#    Updated: 2017/02/13 18:53:07 by vcombey          ###   ########.fr        #
+#    Updated: 2017/03/06 20:25:55 by vcombey          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ SRC = ft_dtoa.c \
 	ft_isupper.c \
 	get_next_line.c \
 	ft_strstrlen.c	\
-	tab_free.c	\
+	ft_tab_free.c	\
 	ft_uitoa.c	\
 	ft_retmsg.c	\
 	ft_putstrstr.c	\
@@ -52,6 +52,8 @@ SRC = ft_dtoa.c \
 	ft_strjoin3_free.c	\
 	ft_error.c	\
 	ft_is_one_of.c	\
+	ft_putnstrstr.c	\
+	ft_tab_int_free.c	\
 
 SRC_O = $(SRC:.c=.o)
 

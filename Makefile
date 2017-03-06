@@ -6,7 +6,7 @@
 #    By: vcombey <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/30 19:59:01 by vcombey           #+#    #+#              #
-#    Updated: 2017/03/02 16:33:17 by vcombey          ###   ########.fr        #
+#    Updated: 2017/03/06 20:27:02 by vcombey          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ SRC =	main.c						\
 		get_rooms.c					\
 		get_links.c					\
 		display_solus.c				\
+		free_all_the_shit.c			\
 		utils/ft_exit_err.c			\
 		utils/room_len.c			\
 			debug.c					\

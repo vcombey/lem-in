@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/19 19:51:23 by vcombey           #+#    #+#             */
-/*   Updated: 2017/03/06 17:46:51 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/03/06 21:44:21 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ void	room_add(char *name, t_anthill *a)
 	t_room	*new;
 
 	new = (t_room*)malloc(sizeof(t_room));
-	new->name = name;
+	if (!(new->name = ft_strdup(name)))
+		ft_exit_err("malloc error", NULL);
 	new->n = a->nb_room;
 	new->next = a->room;
 	a->room = new;
@@ -52,6 +53,7 @@ void	get_room(char *line, t_anthill *a, t_file *f)
 	if (is_in_lst(s[0], a->room))
 		ft_exit_err("same room is defined twice", f);
 	room_add(s[0], a);
+	ft_tab_free(s);
 }
 
 void	get_start(t_file *f, t_anthill *a)

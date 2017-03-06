@@ -1,26 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstrstr.c                                     :+:      :+:    :+:   */
+/*   free_all_the_shit.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/06 18:33:53 by vcombey           #+#    #+#             */
-/*   Updated: 2017/03/06 18:34:12 by vcombey          ###   ########.fr       */
+/*   Created: 2017/03/06 19:18:04 by vcombey           #+#    #+#             */
+/*   Updated: 2017/03/06 21:59:03 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <unistd.h>
+#include "lem-in.h"
+#include "libft/libft.h"
 
-void	ft_putstrstr(char **str)
+void	free_room(t_room *r)
 {
-	int	i;
+	t_room	*tmp;
 
-	i = 0;
-	while (str[i])
+	while (r)
 	{
-		ft_putendl(str[i]);
-		i++;
+		tmp = r;
+		if (r->name != NULL)
+			free(r->name);
+		r = r->next;
+		free(tmp);
 	}
+}
+
+void	free_all_the_shit(t_ways *ways, t_anthill a, t_file f)
+{
+	t_ways *tmp;
+
+	while (ways)
+	{
+		tmp = ways;
+		free_room(ways->solus);
+		ways = ways->next;
+		free(tmp);
+	}
+	free_room(a.room);
+	ft_tab_int_free(a.mat);
+	ft_tab_free(f.data);
 }

@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/14 22:01:27 by vcombey           #+#    #+#             */
-/*   Updated: 2017/03/06 14:13:22 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/03/06 21:59:12 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ void	solus_room_add(int n, t_room **r, t_anthill a)
 	if (!(new = (t_room*)malloc(sizeof(t_room))))
 		ft_exit_err("malloc error", NULL);
 	new->n = -1;
-	new->name = number_to_name(n, a.room);
+	if (!(new->name = ft_strdup(number_to_name(n, a.room))))
+		ft_exit_err("malloc error", NULL);
 	new->next = *r;
 	*r = new;
 }
@@ -49,6 +50,7 @@ void	file_add(int n, t_room **r)
 	tmp = *r;
 	new = (t_room*)malloc(sizeof(t_room));
 	new->n = n;
+	new->name = NULL;
 	new->next = NULL;
 	if (!(tmp))
 	{
@@ -128,6 +130,13 @@ void	delete_room(int k, t_anthill a)
 	}
 }
 
+void	free_bfs(t_bfs bfs)
+{
+	free_room(bfs.already_seen);
+	free_room(bfs.to_see);
+	free(bfs.way);
+}
+
 t_room	*find_best_way(t_anthill a)
 {
 	t_bfs	bfs;
@@ -156,12 +165,16 @@ t_room	*find_best_way(t_anthill a)
 	{
 		solus_room_add(k, &solus, a);
 		if ((k = bfs.way[k]) == -1)
+		{
+			free_bfs(bfs);
 			return (NULL);
+		}
 		if (k != a.start)
 			delete_room(k, a);
 		//ft_putnbr(k);
 		//ft_putchar('\n');
 	}
+	free_bfs(bfs);
 	return (solus);
 }
 

@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/10 03:06:17 by vcombey           #+#    #+#             */
-/*   Updated: 2017/02/13 18:50:37 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/03/06 19:59:08 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ typedef struct		s_list
 	struct s_list	*next;
 }					t_list;
 
+void				ft_tab_int_free(int **tab);
+void				ft_putnstrstr(char **str, int n);
 int					ft_is_one_of(char c, char *that);
 void				ft_error(char *str, char *name);
 void				ft_fill_str(char *str, char c, size_t n);
@@ -97,7 +99,7 @@ void				ft_lstiter(t_list *lst, void(f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 int					ft_islower(int c);
 int					ft_isupper(int c);
-void				tab_free(char **tab);
+void				ft_tab_free(char **tab);
 char				*ft_strjoin3_free(char *s1, char *s2, char *s3, int del);
 int					get_next_line(const int fd, char **line);
 char				*ft_uitoa(unsigned int n);
