@@ -1,25 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   remove_comment.c                                   :+:      :+:    :+:   */
+/*   ways_len.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbadia <rbadia@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/23 22:16:49 by rbadia            #+#    #+#             */
-/*   Updated: 2017/02/25 21:07:18 by rbadia           ###   ########.fr       */
+/*   Created: 2017/03/06 23:27:51 by vcombey           #+#    #+#             */
+/*   Updated: 2017/03/06 23:34:48 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "lem-in.h"
 #include <stdlib.h>
 
-char	*remove_comment(char *str)
+int		ways_len(t_ways *ways)
 {
-	char	*start_comment;
-
-	if ((start_comment = ft_strchr(str, '#')) != NULL)
-		*start_comment = '\0';
-	if ((start_comment = ft_strchr(str, ';')) != NULL)
-		*start_comment = '\0';
-	return (str);
+	return ((ways == NULL) ? 0 : 1 + ways_len(ways->next));
 }

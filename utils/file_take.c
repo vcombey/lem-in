@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_one_of.c                                        :+:      :+:    :+:   */
+/*   file_take.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcombey <vcombey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/21 22:44:34 by vcombey           #+#    #+#             */
-/*   Updated: 2017/02/21 23:42:05 by vcombey          ###   ########.fr       */
+/*   Created: 2017/03/06 23:28:40 by vcombey           #+#    #+#             */
+/*   Updated: 2017/03/06 23:38:55 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		is_one_of(char c, char *that)
-{
-	int	i;
+#include "lem-in.h"
+#include <stdlib.h>
 
-	i = 0;
-	while (that[i])
-	{
-		if (c == that[i])
-			return (1);
-		i++;
-	}
-	return (0);
+int		file_take(t_room **r)
+{
+	t_room		*tmp;
+
+	tmp = *r;
+	*r = (*r)->next;
+	free(tmp);
+	return (tmp->n);
 }

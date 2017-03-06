@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/14 22:01:27 by vcombey           #+#    #+#             */
-/*   Updated: 2017/03/06 23:17:54 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/03/06 23:32:59 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,51 +26,6 @@ void	solus_room_add(int n, t_room **r, t_anthill a)
 		ft_exit_err("malloc error", NULL);
 	new->next = *r;
 	*r = new;
-}
-
-int		int_is_in_lst(int n, t_room *r)
-{
-	t_room	*tmp;
-
-	tmp = r;
-	while (tmp)
-	{
-		if (n == tmp->n)
-			return (1);
-		tmp = tmp->next;
-	}
-	return (0);
-}
-
-void	file_add(int n, t_room **r)
-{
-	t_room	*tmp;
-	t_room	*new;
-
-	tmp = *r;
-	if (!(new = (t_room*)malloc(sizeof(t_room))))
-		ft_exit_err("malloc error", NULL);
-	new->n = n;
-	new->name = NULL;
-	new->next = NULL;
-	if (!(tmp))
-	{
-		*r = new;
-		return ;
-	}
-	while (tmp->next)
-		tmp = tmp->next;
-	tmp->next = new;
-}
-
-int		file_take(t_room **r)
-{
-	t_room		*tmp;
-
-	tmp = *r;
-	*r = (*r)->next;
-	free(tmp);
-	return (tmp->n);
 }
 
 void	ft_bfs(t_anthill a, t_bfs *bfs)
@@ -157,69 +112,4 @@ t_room	*find_best_way(t_anthill a)
 	}
 	free_bfs(bfs);
 	return (solus);
-}
-
-void	add_ways(t_ways **ways, t_room *solus, int nb_ant)
-{
-	t_ways	*new;
-
-	new = (t_ways*)malloc(sizeof(t_ways));
-	new->solus = solus;
-	new->nb_ant = nb_ant;
-	new->next = *ways;
-	*ways = new;
-}
-
-void	supress_ant_in_the_first_solutions(t_ways *ways, int del)
-{
-	t_ways	*tmp;
-
-	tmp = ways;
-	while (tmp && del > 0)
-	{
-		if (tmp->nb_ant > 0)
-		{
-			tmp->nb_ant--;
-			del--;
-		}
-		tmp = tmp->next;
-	}
-	if (del > 0)
-		supress_ant_in_the_first_solutions(ways, del);
-}
-
-int		ways_len(t_ways *ways)
-{
-	return ((ways == NULL) ? 0 : 1 + ways_len(ways->next));
-}
-
-t_ways	*find_best_ways(t_anthill a)
-{
-	t_ways	*ways;
-	t_room	*solus;
-	int		b;
-	int		ant_per_solus;
-
-	ways = NULL;
-	if (!(solus = find_best_way(a)))
-		ft_exit_err("the ants say: \"there is no fucking way to the end\"", NULL);
-	add_ways(&ways, solus, a.nb_ant);
-	//display_solus(ways->solus, a);
-	//display_mat(a);
-	while ((solus = find_best_way(a)) != NULL)
-	{
-		b = ((room_len(ways->solus) - room_len(solus) + ways->nb_ant + 1) / 2);
-		ant_per_solus = b / ways_len(ways);
-		if ((b < 1) || (ant_per_solus < 1))
-		{
-			free_room(solus);
-			return (ways);
-		}
-		supress_ant_in_the_first_solutions(ways, b);
-		add_ways(&ways, solus, b);
-		//display_ways(ways);
-		//display_solus(ways->solus, a);
-		//display_mat(a);
-	}
-	return (ways);
 }

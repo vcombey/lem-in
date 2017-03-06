@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   debug.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/03/06 23:39:32 by vcombey           #+#    #+#             */
+/*   Updated: 2017/03/06 23:39:45 by vcombey          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lem-in.h"
 #include <stdlib.h>
 #include "libft/libft.h"
@@ -34,7 +46,7 @@ void	display_way(int *way, int n)
 void	display_room(t_room *r)
 {
 	t_room *tmp;
-	
+
 	tmp = r;
 	while (tmp)
 	{

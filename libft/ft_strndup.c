@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_arrfree.c                                       :+:      :+:    :+:   */
+/*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbadia <rbadia@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/21 21:10:37 by rbadia            #+#    #+#             */
-/*   Updated: 2017/02/25 21:48:55 by rbadia           ###   ########.fr       */
+/*   Created: 2017/03/06 23:22:46 by vcombey           #+#    #+#             */
+/*   Updated: 2017/03/06 23:22:48 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include "libft.h"
 
-void		ft_arrfree(char **arr)
+char		*ft_strndup(const char *s, size_t n)
 {
-	size_t	i;
+	char	*dst;
 
-	i = 0;
-	while (arr[i])
-		free(arr[i++]);
-	free(arr);
+	if (s == NULL)
+		return (NULL);
+	if (!(dst = (char *)malloc((n + 1) * sizeof(char))))
+		return (NULL);
+	if (dst == NULL)
+		return (NULL);
+	ft_strncpy(dst, s, n);
+	dst[n] = 0;
+	return (dst);
 }

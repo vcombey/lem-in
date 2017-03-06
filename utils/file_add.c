@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_lst.c                                         :+:      :+:    :+:   */
+/*   file_add.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/27 16:30:27 by vcombey           #+#    #+#             */
-/*   Updated: 2017/02/27 16:31:11 by vcombey          ###   ########.fr       */
+/*   Created: 2017/03/06 23:26:12 by vcombey           #+#    #+#             */
+/*   Updated: 2017/03/06 23:26:37 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "lem-in.h"
+#include <stdlib.h>
 
-void		free_lst(t_room *lst)
+void	file_add(int n, t_room **r)
 {
-	t_room		*tmp;
-	t_room		*tmp_next;
+	t_room	*tmp;
+	t_room	*new;
 
-	tmp = lst;
-	while (tmp)
+	tmp = *r;
+	if (!(new = (t_room*)malloc(sizeof(t_room))))
+		ft_exit_err("malloc error", NULL);
+	new->n = n;
+	new->name = NULL;
+	new->next = NULL;
+	if (!(tmp))
 	{
-		tmp_next = tmp->next;
-		free(tmp->name);
-		free(tmp);
-		tmp = tmp_next;
+		*r = new;
+		return ;
 	}
+	while (tmp->next)
+		tmp = tmp->next;
+	tmp->next = new;
 }

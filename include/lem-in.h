@@ -6,14 +6,14 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/14 22:01:44 by vcombey           #+#    #+#             */
-/*   Updated: 2017/03/06 23:15:40 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/03/06 23:41:23 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LEM_IN_H
-#define LEM_IN_H
+# define LEM_IN_H
 
-#define LINES			10000
+# define LINES			10000
 
 typedef struct			s_room
 {
@@ -74,6 +74,12 @@ void					free_bfs(t_bfs bfs);
 
 void					ft_exit_err(char *msg, t_file *data);
 int						room_len(t_room *r);
+int						file_take(t_room **r);
+void					add_ways(t_ways **ways, t_room *solus, int nb_ant);
+int						ways_len(t_ways *ways);
+void					file_add(int n, t_room **r);
+int						int_is_in_lst(int n, t_room *r);
+int						ways_len(t_ways *ways);
 
 /*
 **debug

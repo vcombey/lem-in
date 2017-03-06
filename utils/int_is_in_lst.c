@@ -1,21 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstrlen.c                                     :+:      :+:    :+:   */
+/*   int_is_in_lst.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbadia <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/22 19:44:02 by rbadia            #+#    #+#             */
-/*   Updated: 2017/02/22 19:45:18 by rbadia           ###   ########.fr       */
+/*   Created: 2017/03/06 23:25:01 by vcombey           #+#    #+#             */
+/*   Updated: 2017/03/06 23:25:27 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-unsigned int	ft_strstrlen(char **str)
-{
-	char **tmp;
+#include "lem-in.h"
+#include <stdlib.h>
 
-	tmp = str;
-	while (*str)
-		str++;
-	return (str - tmp);
+int		int_is_in_lst(int n, t_room *r)
+{
+	t_room	*tmp;
+
+	tmp = r;
+	while (tmp)
+	{
+		if (n == tmp->n)
+			return (1);
+		tmp = tmp->next;
+	}
+	return (0);
 }
