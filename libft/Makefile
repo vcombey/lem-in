@@ -6,7 +6,7 @@
 #    By: vcombey <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/09 16:54:16 by vcombey           #+#    #+#              #
-#    Updated: 2017/03/06 20:25:55 by vcombey          ###   ########.fr        #
+#    Updated: 2017/03/07 00:24:17 by vcombey          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,8 @@ SRC = ft_dtoa.c \
 	ft_strstrlen.c	\
 	ft_tab_free.c	\
 	ft_uitoa.c	\
+	ft_itoa_base.c	\
+	ft_uitoa_base.c	\
 	ft_retmsg.c	\
 	ft_putstrstr.c	\
 	ft_strchri.c	\
@@ -54,6 +56,10 @@ SRC = ft_dtoa.c \
 	ft_is_one_of.c	\
 	ft_putnstrstr.c	\
 	ft_tab_int_free.c	\
+	ft_fill_str.c		\
+	ft_putnstr.c		\
+	ft_str_capitalize.c	\
+	ft_strdup_char.c	\
 
 SRC_O = $(SRC:.c=.o)
 
