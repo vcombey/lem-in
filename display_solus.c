@@ -62,16 +62,16 @@ void	display_multi_solus(t_ways *ways, t_anthill a)
 		while (tmp && i <= a.nb_ant)
 		{
 			display_move(tmp->solus);
-			ft_printf("L%d-%s ", i, tmp->solus->name);
-			write(1, "\n", 1);
 			if (tmp->nb_ant > 0)
 			{
 				tmp->solus->n = i;
+				ft_printf("L%d-%s ", i, tmp->solus->name);
 				tmp->nb_ant--;
 			}
 			i++;
 			tmp = tmp->next;
 		}
+		write(1, "\n", 1);
 	}
 	i = 1;
 	while (i < room_len(tmp->solus))
@@ -80,9 +80,9 @@ void	display_multi_solus(t_ways *ways, t_anthill a)
 		while (tmp)
 		{
 			display_move(tmp->solus);
-			write(1, "\n", 1);
 			i++;
 			tmp = tmp->next;
 		}
+		write(1, "\n", 1);
 	}
 }
