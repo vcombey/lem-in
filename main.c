@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/14 22:03:08 by vcombey           #+#    #+#             */
-/*   Updated: 2017/03/02 16:39:58 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/03/06 17:59:21 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	read_file(t_file *f)
 	i = 0;
 	f->line = 1;
 	f->column = 1;
-	if (!(f->data = (char**)ft_memalloc(sizeof(char*)*(LINES + 1))))
+	if (!(f->data = (char**)ft_memalloc(sizeof(char*) * (LINES + 1))))
 		ft_exit_err("malloc error", f);
 	line = NULL;
 	while ((ret = get_next_line(0, &line)) > 0)
@@ -67,6 +67,7 @@ int		main(void)
 	a.room = NULL;
 	a.start = -1;
 	a.end = -1;
+	//ft_putstrstr(f.data);
 	get_nb(f.data[0], &a, f);
 	f.line++;
 	//printf("nb_ant : %d\n", a.nb_ant);
@@ -80,10 +81,10 @@ int		main(void)
 		f.line++;
 	}
 	//printf("start : %d\nend : %d\n", a.start, a.end);
-	ft_putstrstr(f.data);
 	write(1, "\n", 1);
 	//display_mat(a);
 	ways = find_best_ways(a);
+	ft_putstrstr(f.data);
 	display_multi_solus(ways, a);
 	//display_room(solus);
 }

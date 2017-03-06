@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/19 19:51:23 by vcombey           #+#    #+#             */
-/*   Updated: 2017/03/02 15:26:02 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/03/06 17:46:51 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,7 @@ void	get_rooms(t_anthill *a, t_file *f)
 			get_end(f, a);
 		else if (line[0] == '#')
 		{
-			if (line[1] == '#')
-				ft_exit_err("bad command", f);
+			;
 		}
 		else if (ft_strchr(line, '-') != NULL)
 			break ;

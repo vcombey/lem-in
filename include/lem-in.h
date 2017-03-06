@@ -6,14 +6,14 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/14 22:01:44 by vcombey           #+#    #+#             */
-/*   Updated: 2017/03/02 16:33:00 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/03/06 17:56:12 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LEM_IN_H
 #define LEM_IN_H
 
-#define LINES			5000
+#define LINES			10000
 
 typedef struct			s_neightbour
 {
