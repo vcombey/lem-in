@@ -13,6 +13,7 @@
 #include "lem-in.h"
 #include <stdlib.h>
 #include "libft/libft.h"
+#include "ft_printf.h"
 
 void	solus_room_add(int n, t_room **r, t_anthill a)
 {
@@ -182,8 +183,11 @@ void	supress_ant_in_the_first_solutions(t_ways *ways, int del)
 	tmp = ways;
 	while (tmp && del > 0)
 	{
-		tmp->nb_ant--;
-		del--;
+		if (tmp->nb_ant > 0)
+		{
+			tmp->nb_ant--;
+			del--;
+		}
 		tmp = tmp->next;
 	}
 	if (del > 0)
@@ -193,6 +197,20 @@ void	supress_ant_in_the_first_solutions(t_ways *ways, int del)
 int		ways_len(t_ways *ways)
 {
 	return ((ways == NULL) ? 0 : 1 + ways_len(ways->next));
+}
+
+void	display_ways(t_ways *ways)
+{
+	t_ways	*tmp;
+
+	tmp = ways;
+	while (tmp)
+	{
+		ft_printf("nb_ant%d\n", tmp->nb_ant);
+		display_room(tmp->solus);
+		write(1, "\n", 1);
+		tmp = tmp->next;
+	}
 }
 
 t_ways	*find_best_ways(t_anthill a)
@@ -206,18 +224,19 @@ t_ways	*find_best_ways(t_anthill a)
 	if (!(solus = find_best_way(a)))
 		ft_exit_err("the ants say: \"there is no fucking way to the end\"", NULL);
 	add_ways(&ways, solus, a.nb_ant);
-	display_solus(ways->solus, a);
-	display_mat(a);
+	//display_solus(ways->solus, a);
+	//display_mat(a);
 	while ((solus = find_best_way(a)) != NULL)
 	{
-		b = ((room_len(ways->solus) - room_len(solus) + a.nb_ant) / 2);
+		b = ((room_len(ways->solus) - room_len(solus) + ways->nb_ant + 1) / 2);
 		ant_per_solus = b / ways_len(ways);
 		if ((b < 1) || (ant_per_solus < 1))
 			return (ways);
-		add_ways(&ways, solus, b);
 		supress_ant_in_the_first_solutions(ways, b);
-		display_solus(ways->solus, a);
-		display_mat(a);
+		add_ways(&ways, solus, b);
+		//display_ways(ways);
+		//display_solus(ways->solus, a);
+		//display_mat(a);
 	}
 	return (ways);
 }

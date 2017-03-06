@@ -82,7 +82,7 @@ int		main(void)
 	//printf("start : %d\nend : %d\n", a.start, a.end);
 	ft_putstrstr(f.data);
 	write(1, "\n", 1);
-	display_mat(a);
+	//display_mat(a);
 	ways = find_best_ways(a);
 	display_multi_solus(ways, a);
 	//display_room(solus);
