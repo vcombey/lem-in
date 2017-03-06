@@ -47,6 +47,8 @@ void	get_room(char *line, t_anthill *a, t_file *f)
 	s = ft_strsplit(line, ' ');
 	if ((ft_strstrlen(s) != 3) || (!(is_a_number(s[1]))) || (!(is_a_number(s[2]))))
 		ft_exit_err("bad definition of a room", f);
+	if (s[0][0] == 'L')
+		ft_exit_err("name can't start with a L", f);
 	if (is_in_lst(s[0], a->room))
 		ft_exit_err("same room is defined twice", f);
 	room_add(s[0], a);
@@ -89,7 +91,10 @@ void	get_rooms(t_anthill *a, t_file *f)
 		else if (ft_strequ(line, "##end"))
 			get_end(f, a);
 		else if (line[0] == '#')
-			;
+		{
+			if (line[1] == '#')
+				ft_exit_err("bad command", f);
+		}
 		else if (ft_strchr(line, '-') != NULL)
 			break ;
 		else

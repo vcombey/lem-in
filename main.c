@@ -29,10 +29,10 @@ int		is_a_number(char *line)
 	return (1);
 }
 
-void	get_nb(char *line, t_anthill *a)
+void	get_nb(char *line, t_anthill *a, t_file f)
 {
-	if (!(is_a_number(line)))
-		exit(1);
+	if (!line || !(is_a_number(line)))
+		ft_exit_err("bad number of ants", &f);
 	a->nb_ant = ft_atoi(line);
 }
 
@@ -67,7 +67,7 @@ int		main(void)
 	a.room = NULL;
 	a.start = -1;
 	a.end = -1;
-	get_nb(f.data[0], &a);
+	get_nb(f.data[0], &a, f);
 	f.line++;
 	//printf("nb_ant : %d\n", a.nb_ant);
 	get_rooms(&a, &f);

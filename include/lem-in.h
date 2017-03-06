@@ -13,7 +13,7 @@
 #ifndef LEM_IN_H
 #define LEM_IN_H
 
-#define LINES			1000
+#define LINES			5000
 
 typedef struct			s_neightbour
 {
