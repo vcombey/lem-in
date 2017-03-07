@@ -6,14 +6,14 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/14 22:01:44 by vcombey           #+#    #+#             */
-/*   Updated: 2017/03/07 17:15:42 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/03/07 17:57:14 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LEM_IN_H
 # define LEM_IN_H
 
-# define LINES			10000
+# define LINES			100
 
 typedef struct			s_room
 {
@@ -43,6 +43,7 @@ typedef struct			s_file
 {
 	char				**data;
 	int					line;
+	int					data_len;
 }						t_file;
 
 typedef struct			s_bfs
@@ -79,6 +80,7 @@ int						ways_len(t_ways *ways);
 void					file_add(int n, t_room **r);
 int						int_is_in_lst(int n, t_room *r);
 int						ways_len(t_ways *ways);
+int						ft_atoi_safe(char *str, int *result);
 
 /*
 **debug

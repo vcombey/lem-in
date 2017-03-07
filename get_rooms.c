@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/19 19:51:23 by vcombey           #+#    #+#             */
-/*   Updated: 2017/03/06 22:52:09 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/03/07 18:01:05 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,10 @@ int		is_in_lst(char *name, t_room *r)
 void	get_room(char *line, t_anthill *a, t_file *f)
 {
 	char	**s;
+	int		result;
 
 	s = ft_strsplit(line, ' ');
-	if ((ft_strstrlen(s) != 3) || (!(is_a_number(s[1]))) || (!(is_a_number(s[2]))))
+	if ((ft_strstrlen(s) != 3) || (!(ft_atoi_safe(s[1], &result))) || (!(ft_atoi_safe(s[2], &result))))
 		ft_exit_err("bad definition of a room", f);
 	if (s[0][0] == 'L')
 		ft_exit_err("name can't start with a L", f);

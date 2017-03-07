@@ -6,7 +6,7 @@
 #    By: vcombey <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/30 19:59:01 by vcombey           #+#    #+#              #
-#    Updated: 2017/03/07 00:19:25 by vcombey          ###   ########.fr        #
+#    Updated: 2017/03/07 17:53:35 by vcombey          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ SRC =	main.c						\
 		utils/int_is_in_lst.c		\
 		utils/room_len.c			\
 		utils/ways_len.c			\
+		utils/ft_atoi_safe.c		\
 			debug.c					\
 
 INCLUDE = -I libft/ -I ./ft_printf/ -I ./include
