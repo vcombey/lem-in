@@ -6,7 +6,7 @@
 /*   By: vcombey <vcombey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/21 20:19:42 by vcombey           #+#    #+#             */
-/*   Updated: 2017/02/22 13:35:39 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/03/07 17:15:10 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,7 @@ void	ft_exit_err(char *msg, t_file *data)
 		ft_printf("error: %s\n", msg);
 	else if (errno == 0)
 	{
-		ft_printf("syntax error: %s at [%d, %d]\n", msg, data->line,
-				data->column);
+		ft_printf("syntax error: %s at line %d\n", msg, data->line);
 	}
 	else
 	{

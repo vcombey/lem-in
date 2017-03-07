@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/14 22:01:44 by vcombey           #+#    #+#             */
-/*   Updated: 2017/03/06 23:41:23 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/03/07 17:15:42 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ typedef struct			s_file
 {
 	char				**data;
 	int					line;
-	int					column;
 }						t_file;
 
 typedef struct			s_bfs

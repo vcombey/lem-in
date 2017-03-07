@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/06 23:40:42 by vcombey           #+#    #+#             */
-/*   Updated: 2017/03/07 00:40:49 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/03/07 17:15:56 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ void	get_nb(char *line, t_anthill *a, t_file f)
 {
 	if (!line || !(is_a_number(line)))
 		ft_exit_err("bad number of ants", &f);
-	a->nb_ant = ft_atoi(line);
+	if ((a->nb_ant = ft_atoi(line)) == 0)
+		ft_exit_err("there is no ants you newbie", &f);
 }
 
 void	read_file(t_file *f)
@@ -44,7 +45,6 @@ void	read_file(t_file *f)
 
 	i = 0;
 	f->line = 1;
-	f->column = 1;
 	if (!(f->data = (char**)ft_memalloc(sizeof(char*) * (LINES + 1))))
 		ft_exit_err("malloc error", f);
 	line = NULL;
