@@ -6,7 +6,7 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/08 14:42:05 by vcombey           #+#    #+#             */
-/*   Updated: 2017/03/08 16:51:00 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/03/08 18:04:56 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,14 +82,15 @@ t_room	*reform_solus(t_bfs bfs, t_anthill a)
 		a.mat[a.end][a.start] = 0;
 		a.mat[a.start][a.end] = 0;
 	}
+	if ((bfs.way[a.end]) == -1)
+	{
+		free_bfs(bfs);
+		return (NULL);
+	}
 	while (k != a.start)
 	{
 		solus_room_add(k, &solus, a);
-		if ((k = bfs.way[k]) == -1)
-		{
-			free_bfs(bfs);
-			return (NULL);
-		}
+		k = bfs.way[k];
 		if (k != a.start)
 			delete_room(k, a);
 	}
