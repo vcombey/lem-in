@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lem-in.c                                           :+:      :+:    :+:   */
+/*   lem_in.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/14 22:01:27 by vcombey           #+#    #+#             */
-/*   Updated: 2017/03/06 23:32:59 by vcombey          ###   ########.fr       */
+/*   Created: 2017/03/08 14:42:05 by vcombey           #+#    #+#             */
+/*   Updated: 2017/03/08 16:51:00 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem-in.h"
+#include "lem_in.h"
 #include <stdlib.h>
 #include "libft/libft.h"
 #include "ft_printf.h"
@@ -39,9 +39,6 @@ void	ft_bfs(t_anthill a, t_bfs *bfs)
 	{
 		r = file_take(&(bfs->to_see));
 		i = 0;
-		//ft_putnbr(r);
-		//ft_putchar('\n');
-		//display_way(bfs->way, a.nb_room);
 		while (i < a.nb_room)
 		{
 			if (a.mat[r][i] && (!(int_is_in_lst(i, bfs->already_seen))))
@@ -73,24 +70,12 @@ void	delete_room(int k, t_anthill a)
 	}
 }
 
-t_room	*find_best_way(t_anthill a)
+t_room	*reform_solus(t_bfs bfs, t_anthill a)
 {
-	t_bfs	bfs;
-	int		i;
 	int		k;
 	t_room	*solus;
 
-	i = 0;
 	solus = NULL;
-	bfs.already_seen = NULL;
-	bfs.to_see = NULL;
-	bfs.way = (int *)ft_memalloc(sizeof(int) * a.nb_room);
-	while (i < a.nb_room)
-	{
-		bfs.way[i] = -1;
-		i++;
-	}
-	ft_bfs(a, &bfs);
 	k = a.end;
 	if (bfs.way[a.end] == a.start)
 	{
@@ -107,9 +92,25 @@ t_room	*find_best_way(t_anthill a)
 		}
 		if (k != a.start)
 			delete_room(k, a);
-		//ft_putnbr(k);
-		//ft_putchar('\n');
 	}
 	free_bfs(bfs);
 	return (solus);
+}
+
+t_room	*find_best_way(t_anthill a)
+{
+	t_bfs	bfs;
+	int		i;
+
+	i = 0;
+	bfs.already_seen = NULL;
+	bfs.to_see = NULL;
+	bfs.way = (int *)ft_memalloc(sizeof(int) * a.nb_room);
+	while (i < a.nb_room)
+	{
+		bfs.way[i] = -1;
+		i++;
+	}
+	ft_bfs(a, &bfs);
+	return (reform_solus(bfs, a));
 }

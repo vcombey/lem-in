@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lem-in.h                                           :+:      :+:    :+:   */
+/*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/14 22:01:44 by vcombey           #+#    #+#             */
-/*   Updated: 2017/03/07 17:57:14 by vcombey          ###   ########.fr       */
+/*   Created: 2017/03/08 14:41:52 by vcombey           #+#    #+#             */
+/*   Updated: 2017/03/08 15:51:42 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void					free_bfs(t_bfs bfs);
 **utils
 */
 
+int						is_in_lst(char *name, t_room *r);
 void					ft_exit_err(char *msg, t_file *data);
 int						room_len(t_room *r);
 int						file_take(t_room **r);

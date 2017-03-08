@@ -6,14 +6,14 @@
 #    By: vcombey <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/30 19:59:01 by vcombey           #+#    #+#              #
-#    Updated: 2017/03/07 17:53:35 by vcombey          ###   ########.fr        #
+#    Updated: 2017/03/08 16:40:41 by vcombey          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME =	lem-in
 
 SRC =	main.c						\
-		lem-in.c					\
+		lem_in.c					\
 		find_best_ways.c			\
 		get_rooms.c					\
 		get_links.c					\
@@ -27,11 +27,11 @@ SRC =	main.c						\
 		utils/room_len.c			\
 		utils/ways_len.c			\
 		utils/ft_atoi_safe.c		\
-			debug.c					\
+		utils/is_in_lst.c			\
 
-INCLUDE = -I libft/ -I ./ft_printf/ -I ./include
+INCLUDE = -I ./libft/ -I ./ft_printf/ -I ./include
 
-LIBS = -L ./libft -lft -L ./ft_printf/ -lftprintf
+LIBS = -L ./libft/ -lft -L ./ft_printf/ -lftprintf
 
 OBJS = $(addprefix objs/, $(SRC:.c=.o))
 

@@ -6,11 +6,11 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/06 23:39:32 by vcombey           #+#    #+#             */
-/*   Updated: 2017/03/06 23:39:45 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/03/08 15:14:15 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem-in.h"
+#include "lem_in.h"
 #include <stdlib.h>
 #include "libft/libft.h"
 #include "ft_printf.h"

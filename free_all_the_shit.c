@@ -6,11 +6,11 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/06 19:18:04 by vcombey           #+#    #+#             */
-/*   Updated: 2017/03/06 23:15:43 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/03/08 14:42:49 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem-in.h"
+#include "lem_in.h"
 #include "libft/libft.h"
 
 void	free_bfs(t_bfs bfs)

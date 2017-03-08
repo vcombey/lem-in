@@ -6,11 +6,11 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/06 23:40:42 by vcombey           #+#    #+#             */
-/*   Updated: 2017/03/07 18:02:18 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/03/08 16:52:54 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem-in.h"
+#include "lem_in.h"
 #include "libft/libft.h"
 #include <stdio.h>
 
@@ -82,16 +82,10 @@ int		main(void)
 
 	read_file(&f);
 	a.room = NULL;
-	a.start = -1;
-	a.end = -1;
-	//ft_putstrstr(f.data);
 	get_nb(f.data[0], &a, f);
 	f.line++;
-	//printf("nb_ant : %d\n", a.nb_ant);
 	get_rooms(&a, &f);
 	init_mat(&a);
-	//display_room(a.room);
-	//printf("nb_room: %d\n", a.nb_room);
 	while (f.data[f.line - 1] != NULL)
 	{
 		if (!(get_links(f.data[f.line - 1], &a)))
@@ -101,12 +95,9 @@ int		main(void)
 		}
 		f.line++;
 	}
-	//printf("start : %d\nend : %d\n", a.start, a.end);
-	//display_mat(a);
 	ways = find_best_ways(a);
 	ft_putnstrstr(f.data, f.line);
 	write(1, "\n", 1);
 	display_multi_solus(ways, a);
 	free_all_the_shit(ways, a, f);
-	//display_room(solus);
 }

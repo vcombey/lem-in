@@ -6,7 +6,7 @@
 /*   By: vcombey <vcombey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/21 20:19:42 by vcombey           #+#    #+#             */
-/*   Updated: 2017/03/07 17:15:10 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/03/08 14:48:13 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <errno.h>
-#include "lem-in.h"
+#include "lem_in.h"
 #include "ft_printf.h"
 
 void	ft_exit_err(char *msg, t_file *data)

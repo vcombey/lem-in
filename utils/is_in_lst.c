@@ -1,19 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   room_len.c                                         :+:      :+:    :+:   */
+/*   is_in_lst.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vcombey <vcombey@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/06 23:38:43 by vcombey           #+#    #+#             */
-/*   Updated: 2017/03/08 14:48:11 by vcombey          ###   ########.fr       */
+/*   Created: 2017/03/08 15:17:54 by vcombey           #+#    #+#             */
+/*   Updated: 2017/03/08 16:33:49 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
-#include <stdlib.h>
+#include "libft.h"
 
-int		room_len(t_room *r)
+int		is_in_lst(char *name, t_room *r)
 {
-	return ((r == NULL) ? 0 : 1 + room_len(r->next));
+	t_room	*tmp;
+
+	tmp = r;
+	while (tmp)
+	{
+		if (ft_strequ(tmp->name, name))
+			return (1);
+		tmp = tmp->next;
+	}
+	return (0);
 }

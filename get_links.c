@@ -6,11 +6,11 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/19 19:51:38 by vcombey           #+#    #+#             */
-/*   Updated: 2017/03/06 19:13:48 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/03/08 14:42:56 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem-in.h"
+#include "lem_in.h"
 #include "libft/libft.h"
 
 void	init_mat(t_anthill *a)
@@ -25,7 +25,7 @@ void	init_mat(t_anthill *a)
 	a->mat[n] = NULL;
 	while (i < n)
 	{
-		if (!(a->mat[i] = (int *)ft_memalloc(sizeof (int) * (n + 1))))
+		if (!(a->mat[i] = (int *)ft_memalloc(sizeof(int) * (n + 1))))
 			ft_exit_err("malloc error", NULL);
 		i++;
 	}

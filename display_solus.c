@@ -6,11 +6,11 @@
 /*   By: vcombey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/02 16:12:39 by vcombey           #+#    #+#             */
-/*   Updated: 2017/03/06 20:41:16 by vcombey          ###   ########.fr       */
+/*   Updated: 2017/03/08 16:46:19 by vcombey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem-in.h"
+#include "lem_in.h"
 #include "ft_printf.h"
 #include <unistd.h>
 
@@ -54,12 +54,33 @@ void	display_solus(t_room *solus, t_anthill a)
 	}
 }
 
+void	display_multi_solus_end(t_ways *ways)
+{
+	int		i;
+	int		has_moved;
+	t_ways	*tmp;
+
+	i = 1;
+	while (i < room_len(ways->solus))
+	{
+		has_moved = 0;
+		tmp = ways;
+		while (tmp)
+		{
+			has_moved |= display_move(tmp->solus);
+			tmp = tmp->next;
+		}
+		if (has_moved)
+			write(1, "\n", 1);
+		i++;
+	}
+}
+
 void	display_multi_solus(t_ways *ways, t_anthill a)
 {
 	int		i;
 	int		n;
 	t_ways	*tmp;
-	int		has_moved;
 
 	n = room_len(ways->solus);
 	i = 1;
@@ -80,18 +101,5 @@ void	display_multi_solus(t_ways *ways, t_anthill a)
 		}
 		write(1, "\n", 1);
 	}
-	i = 1;
-	while (i < room_len(ways->solus))
-	{
-		has_moved = 0;
-		tmp = ways;
-		while (tmp)
-		{
-			has_moved |= display_move(tmp->solus);
-			tmp = tmp->next;
-		}
-		if (has_moved)
-			write(1, "\n", 1);
-		i++;
-	}
+	display_multi_solus_end(ways);
 }
